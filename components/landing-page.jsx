@@ -2,6 +2,7 @@
 
 import Link from 'next/link'
 import { Star, Search, Award } from 'lucide-react'
+import Image from 'next/image';
 
 export function LandingPage() {
   return (
@@ -32,8 +33,10 @@ export function LandingPage() {
           <h2 className="text-3xl font-bold mb-8 text-center">Tailor of the Month</h2>
           <div
             className="bg-gray-800 rounded-lg p-6 flex flex-col md:flex-row items-center">
-            <img
-              src="/placeholder.svg?height=150&width=150"
+            <Image
+              src="/male1.jpeg"
+              height = "150"
+              width = "150"
               alt="Tailor of the Month"
               className="w-32 h-32 rounded-full mb-4 md:mb-0 md:mr-6" />
             <div>

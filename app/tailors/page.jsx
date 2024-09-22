@@ -1,45 +1,80 @@
-'use client'
+"use client";
 
-import { useState } from 'react'
-import Link from 'next/link'
-import { Star, Filter, MapPin, Briefcase } from 'lucide-react'
+import { useState } from "react";
+import Link from "next/link";
+import { Star, Filter, MapPin, Briefcase } from "lucide-react";
+import Image from "next/image";
 
 const tailors = [
-  { id: '1', name: 'Raju Shah', rating: 4.8, reviews: 95, specialization: 'Suits', location: 'New York', gender: 'Male', price: 800 },
-  { id: '2', name: 'Riya Sinha', rating: 4.7, reviews: 87, specialization: 'Dresses', location: 'Los Angeles', gender: 'Female', price: 750 },
-  { id: '3', name: 'Aryan Singh', rating: 4.9, reviews: 110, specialization: 'Alterations', location: 'Chicago', gender: 'Male', price: 700 },
-]
+  {
+    id: "1",
+    name: "Raju Shah",
+    rating: 4.8,
+    reviews: 95,
+    specialization: "Suits",
+    location: "Ramapuram",
+    gender: "Male",
+    price: 800,
+    url: "/male1.jpeg",
+  },
+  {
+    id: "2",
+    name: "Riya Sinha",
+    rating: 4.7,
+    reviews: 87,
+    specialization: "Dresses",
+    location: "CMBT",
+    gender: "Female",
+    price: 750,
+    url: "/female.jpeg",
+  },
+  {
+    id: "3",
+    name: "Aryan Singh",
+    rating: 4.9,
+    reviews: 110,
+    specialization: "Alterations",
+    location: "Ashok Nagar",
+    gender: "Male",
+    price: 700,
+    url: "/male2.jpeg",
+  },
+];
 
 export default function TailorsPage() {
   const [filters, setFilters] = useState({
     minRating: 0,
-    gender: '',
-    specialization: '',
+    gender: "",
+    specialization: "",
     minPrice: 0,
     maxPrice: 1000,
-  })
+  });
 
   const handleFilterChange = (e) => {
-    const { name, value } = e.target
-    setFilters(prevFilters => ({
+    const { name, value } = e.target;
+    setFilters((prevFilters) => ({
       ...prevFilters,
       [name]: value,
-    }))
-  }
+    }));
+  };
 
-  const filteredTailors = tailors.filter(tailor => 
-    tailor.rating >= filters.minRating &&
-    (filters.gender === '' || tailor.gender === filters.gender) &&
-    (filters.specialization === '' || tailor.specialization === filters.specialization) &&
-    tailor.price >= filters.minPrice &&
-    tailor.price <= filters.maxPrice
-  )
+  const filteredTailors = tailors.filter(
+    (tailor) =>
+      tailor.rating >= filters.minRating &&
+      (filters.gender === "" || tailor.gender === filters.gender) &&
+      (filters.specialization === "" ||
+        tailor.specialization === filters.specialization) &&
+      tailor.price >= filters.minPrice &&
+      tailor.price <= filters.maxPrice
+  );
 
   return (
     <div className="min-h-screen bg-gray-900 text-white">
       <div className="container mx-auto px-4 py-8">
-        <h1 className="text-4xl font-bold mb-8 text-center">Browse Tailors</h1>
-        
+        <h1 className="text-4xl font-bold mb-8 text-center">
+          <a href="/">Browse Tailors</a>
+        </h1>
+
         <div className="flex flex-col md:flex-row gap-8">
           <div className="w-full md:w-1/4">
             <div className="bg-gray-800 p-4 rounded-lg">
@@ -48,7 +83,9 @@ export default function TailorsPage() {
               </h2>
               <div className="space-y-4">
                 <div>
-                  <label htmlFor="minRating" className="block mb-2">Minimum Rating</label>
+                  <label htmlFor="minRating" className="block mb-2">
+                    Minimum Rating
+                  </label>
                   <input
                     type="range"
                     id="minRating"
@@ -63,7 +100,9 @@ export default function TailorsPage() {
                   <span>{filters.minRating.toFixed(1)} stars</span>
                 </div>
                 <div>
-                  <label htmlFor="gender" className="block mb-2">Gender</label>
+                  <label htmlFor="gender" className="block mb-2">
+                    Gender
+                  </label>
                   <select
                     id="gender"
                     name="gender"
@@ -77,7 +116,9 @@ export default function TailorsPage() {
                   </select>
                 </div>
                 <div>
-                  <label htmlFor="specialization" className="block mb-2">Specialization</label>
+                  <label htmlFor="specialization" className="block mb-2">
+                    Specialization
+                  </label>
                   <select
                     id="specialization"
                     name="specialization"
@@ -116,21 +157,25 @@ export default function TailorsPage() {
               </div>
             </div>
           </div>
-          
+
           <div className="w-full md:w-3/4">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {filteredTailors.map((tailor) => (
                 <Link href={`/tailors/${tailor.id}`} key={tailor.id}>
                   <div className="bg-gray-800 rounded-lg p-4 hover:bg-gray-700 transition-colors cursor-pointer">
-                    <img
-                      src={`/placeholder.svg?height=150&width=150&text=${tailor.name}`}
+                    <Image
+                      src={tailor.url}
+                      height="150"
+                      width="150"
                       alt={tailor.name}
                       className="w-full h-48 object-cover rounded-lg mb-4"
                     />
                     <h3 className="text-xl font-bold mb-2">{tailor.name}</h3>
                     <div className="flex items-center mb-2">
                       <Star className="text-yellow-400 mr-1" />
-                      <span>{tailor.rating} ({tailor.reviews} reviews)</span>
+                      <span>
+                        {tailor.rating} ({tailor.reviews} reviews)
+                      </span>
                     </div>
                     <div className="flex items-center mb-2">
                       <Briefcase className="mr-1" />
@@ -140,7 +185,9 @@ export default function TailorsPage() {
                       <MapPin className="mr-1" />
                       <span>{tailor.location}</span>
                     </div>
-                    <div className="text-purple-400 font-bold">₹{tailor.price}/hour</div>
+                    <div className="text-purple-400 font-bold">
+                      ₹{tailor.price}/hour
+                    </div>
                   </div>
                 </Link>
               ))}
@@ -149,5 +196,5 @@ export default function TailorsPage() {
         </div>
       </div>
     </div>
-  )
+  );
 }

@@ -1,6 +1,7 @@
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
-import { Star, Calendar, MapPin, Briefcase, Clock, DollarSign } from 'lucide-react'
+import { Star, Calendar, MapPin, Briefcase, Clock, IndianRupee } from 'lucide-react'
+import Image from 'next/image'
 
 const tailors = [
   {
@@ -10,13 +11,14 @@ const tailors = [
     gender: 'Male',
     experience: 12,
     specialties: ['Suits', 'Formal Wear', 'Alterations'],
+    url:"/male1.jpeg",
     rating: 4.8,
     reviews: [
       { id: 1, user: 'Alice', rating: 5, comment: 'Excellent work on my wedding dress!' },
       { id: 2, user: 'Bob', rating: 4, comment: 'Great alterations, but took a bit longer than expected.' },
       { id: 3, user: 'Charlie', rating: 5, comment: 'Perfect fit on my new suit. Highly recommended!' },
     ],
-    location: 'New York',
+    location: 'Ramapuram',
     price: 80,
   },
   {
@@ -26,12 +28,13 @@ const tailors = [
     gender: 'Female',
     experience: 7,
     specialties: ['Dresses', 'Skirts', 'Blouses'],
+    url:"/female.jpeg",
     rating: 4.7,
     reviews: [
       { id: 1, user: 'David', rating: 5, comment: 'Emma did an amazing job on my wife\'s dress!' },
       { id: 2, user: 'Eve', rating: 4, comment: 'Good work, but a bit pricey.' },
     ],
-    location: 'Los Angeles',
+    location: 'CMBT',
     price: 75,
   },
   {
@@ -41,12 +44,13 @@ const tailors = [
     gender: 'Male',
     experience: 7,
     specialties: ['Alterations'],
+    url:"/male2.jpeg",
     rating: 4.7,
     reviews: [
       { id: 1, user: 'David', rating: 5, comment: 'Emma did an amazing job on my wife\'s dress!' },
       { id: 2, user: 'Eve', rating: 4, comment: 'Good work, but a bit pricey.' },
     ],
-    location: 'Los Angeles',
+    location: 'Ashok Nagar',
     price: 75,
   },
 ]
@@ -72,8 +76,10 @@ export default async function TailorDetail({ params }) {
         
         <div className="bg-gray-800 rounded-lg p-6 mb-8">
           <div className="flex flex-col md:flex-row">
-            <img
-              src={`/placeholder.svg?height=300&width=300&text=${tailor.name}`}
+            <Image
+              src={tailor.url}
+              height = "300"
+              width = "300"
               alt={tailor.name}
               className="w-full md:w-1/3 h-64 md:h-auto object-cover rounded-lg mb-4 md:mb-0 md:mr-6"
             />
@@ -97,8 +103,8 @@ export default async function TailorDetail({ params }) {
                   <span>{tailor.location}</span>
                 </div>
                 <div className="flex items-center">
-                  <DollarSign className="mr-2" />
-                  <span>${tailor.price}/hour</span>
+                  <IndianRupee className="mr-2" />
+                  <span>₹{tailor.price}/hour</span>
                 </div>
               </div>
               <h2 className="text-xl font-bold mb-2">Specialties</h2>
