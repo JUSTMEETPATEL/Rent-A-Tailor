@@ -63,7 +63,7 @@ const tailors = [
   },
   {
     id: "6",
-    name: "Angela Cristopher",
+    name: "Angela Christopher",
     rating: 4.9,
     reviews: 110,
     specialization: "Formal Wear",
