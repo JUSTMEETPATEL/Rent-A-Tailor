@@ -44,7 +44,7 @@ const tailors = [
     price: 800,
   },
   {
-    id: "2",
+    id: "3",
     name: "Raju Shah",
     age: 28,
     gender: "Male",
@@ -70,7 +70,7 @@ const tailors = [
     price: 750,
   },
   {
-    id: "3",
+    id: "4",
     name: "Aakash Biju",
     age: 28,
     gender: "Male",
@@ -96,7 +96,7 @@ const tailors = [
     price: 750,
   },
   {
-    id: "4",
+    id: "2",
     name: "Riya Sinha",
     age: 28,
     gender: "Female",
@@ -149,7 +149,7 @@ const tailors = [
   },
   {
     id: "6",
-    name: "Angela Cristopher",
+    name: "Angela Christopher",
     age: 35,
     gender: "Female",
     experience: 12,
