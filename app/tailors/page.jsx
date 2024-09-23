@@ -13,7 +13,7 @@ const tailors = [
     reviews: 95,
     specialization: "Suits",
     location: "Ramapuram",
-    gender: "Male",
+    gender: "Female",
     price: 800,
     url: "/male1.jpeg",
   },
