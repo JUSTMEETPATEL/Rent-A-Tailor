@@ -8,7 +8,7 @@ import Image from "next/image";
 const tailors = [
   {
     id: "1",
-    name: "Raju Shah",
+    name: "Priya Maheshwari",
     rating: 4.8,
     reviews: 95,
     specialization: "Suits",
