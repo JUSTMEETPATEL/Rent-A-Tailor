@@ -40,8 +40,8 @@ export function LandingPage() {
               alt="Tailor of the Month"
               className="w-32 h-32 rounded-full mb-4 md:mb-0 md:mr-6" />
             <div>
-              <h3 className="text-2xl font-bold mb-2">Raju Shah</h3>
-              <p className="mb-2">Specializing in wedding dresses and formal wear</p>
+              <h3 className="text-2xl font-bold mb-2">Priya Maheshwari</h3>
+              <p className="mb-2">Specializing in wedding dresses and suits</p>
               <div className="flex items-center">
                 <Star className="text-yellow-400 mr-1" />
                 <span>4.9 (120 reviews)</span>

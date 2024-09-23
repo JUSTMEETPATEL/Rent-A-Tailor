@@ -1,85 +1,214 @@
-import { notFound } from 'next/navigation'
-import Link from 'next/link'
-import { Star, Calendar, MapPin, Briefcase, Clock, IndianRupee } from 'lucide-react'
-import Image from 'next/image'
+import { notFound } from "next/navigation";
+import Link from "next/link";
+import {
+  Star,
+  Calendar,
+  MapPin,
+  Briefcase,
+  Clock,
+  IndianRupee,
+} from "lucide-react";
+import Image from "next/image";
 
 const tailors = [
   {
-    id: '1',
-    name: 'Raju Shah',
+    id: "1",
+    name: "Priya Maheshwari",
     age: 35,
-    gender: 'Male',
+    gender: "Female",
     experience: 12,
-    specialties: ['Suits', 'Formal Wear', 'Alterations'],
-    url:"/male1.jpeg",
+    specialties: ["Suits", "Formal Wear", "Alterations"],
+    url: "/male1.jpeg",
     rating: 4.8,
     reviews: [
-      { id: 1, user: 'Alice', rating: 5, comment: 'Excellent work on my wedding dress!' },
-      { id: 2, user: 'Bob', rating: 4, comment: 'Great alterations, but took a bit longer than expected.' },
-      { id: 3, user: 'Charlie', rating: 5, comment: 'Perfect fit on my new suit. Highly recommended!' },
+      {
+        id: 1,
+        user: "Alice",
+        rating: 5,
+        comment: "Excellent work on my wedding dress!",
+      },
+      {
+        id: 2,
+        user: "Bob",
+        rating: 4,
+        comment: "Great alterations, but took a bit longer than expected.",
+      },
+      {
+        id: 3,
+        user: "Charlie",
+        rating: 5,
+        comment: "Perfect fit on my new suit. Highly recommended!",
+      },
     ],
-    location: 'Ramapuram',
-    price: 80,
+    location: "Ramapuram",
+    price: 800,
   },
   {
-    id: '2',
-    name: 'Riya Sinha',
+    id: "2",
+    name: "Raju Shah",
     age: 28,
-    gender: 'Female',
+    gender: "Male",
     experience: 7,
-    specialties: ['Dresses', 'Skirts', 'Blouses'],
-    url:"/female.jpeg",
+    specialties: ["Dresses", "Skirts", "Suits"],
+    url: "/raju.avif",
     rating: 4.7,
     reviews: [
-      { id: 1, user: 'David', rating: 5, comment: 'Emma did an amazing job on my wife\'s dress!' },
-      { id: 2, user: 'Eve', rating: 4, comment: 'Good work, but a bit pricey.' },
+      {
+        id: 1,
+        user: "David",
+        rating: 5,
+        comment: "They did an amazing job on my wife's dress!",
+      },
+      {
+        id: 2,
+        user: "Eve",
+        rating: 4,
+        comment: "Good work, but a bit pricey.",
+      },
     ],
-    location: 'CMBT',
-    price: 75,
+    location: "CMBT",
+    price: 750,
   },
   {
-    id: '3',
-    name: 'Aryan Singh',
+    id: "3",
+    name: "Aakash Biju",
     age: 28,
-    gender: 'Male',
+    gender: "Male",
     experience: 7,
-    specialties: ['Alterations'],
-    url:"/male2.jpeg",
+    specialties: ["Dresses", "Skirts", "Formal Wear"],
+    url: "/aakash.webp",
     rating: 4.7,
     reviews: [
-      { id: 1, user: 'David', rating: 5, comment: 'Emma did an amazing job on my wife\'s dress!' },
-      { id: 2, user: 'Eve', rating: 4, comment: 'Good work, but a bit pricey.' },
+      {
+        id: 1,
+        user: "David",
+        rating: 5,
+        comment: "They did an amazing job on my wife's dress!",
+      },
+      {
+        id: 2,
+        user: "Eve",
+        rating: 4,
+        comment: "Good work, but a bit pricey.",
+      },
     ],
-    location: 'Ashok Nagar',
-    price: 75,
+    location: "CMBT",
+    price: 750,
   },
-]
+  {
+    id: "4",
+    name: "Riya Sinha",
+    age: 28,
+    gender: "Female",
+    experience: 7,
+    specialties: ["Dresses", "Skirts", "Blouses"],
+    url: "/female.jpeg",
+    rating: 4.7,
+    reviews: [
+      {
+        id: 1,
+        user: "David",
+        rating: 5,
+        comment: "They did an amazing job on my wife's dress!",
+      },
+      {
+        id: 2,
+        user: "Eve",
+        rating: 4,
+        comment: "Good work, but a bit pricey.",
+      },
+    ],
+    location: "CMBT",
+    price: 750,
+  },
+  {
+    id: "5",
+    name: "Fatima Sheik",
+    age: 28,
+    gender: "Female",
+    experience: 7,
+    specialties: ["Alterations"],
+    url: "/male2.jpeg",
+    rating: 4.7,
+    reviews: [
+      {
+        id: 1,
+        user: "David",
+        rating: 5,
+        comment: "They did an amazing job on my wife's dress!",
+      },
+      {
+        id: 2,
+        user: "Eve",
+        rating: 4,
+        comment: "Good work, but a bit pricey.",
+      },
+    ],
+    location: "Ashok Nagar",
+    price: 750,
+  },
+  {
+    id: "6",
+    name: "Angela Cristopher",
+    age: 35,
+    gender: "Female",
+    experience: 12,
+    specialties: ["Suits", "Formal Wear", "Alterations"],
+    url: "/female1.jpeg",
+    rating: 4.8,
+    reviews: [
+      {
+        id: 1,
+        user: "Alice",
+        rating: 5,
+        comment: "Excellent work on my wedding dress!",
+      },
+      {
+        id: 2,
+        user: "Bob",
+        rating: 4,
+        comment: "Great alterations, but took a bit longer than expected.",
+      },
+      {
+        id: 3,
+        user: "Charlie",
+        rating: 5,
+        comment: "Perfect fit on my new suit. Highly recommended!",
+      },
+    ],
+    location: "Ramapuram",
+    price: 800,
+  },
+];
 
 async function getTailor(id) {
   // In a real app, this would be an API call or database query
-  return tailors.find(tailor => tailor.id === id)
+  return tailors.find((tailor) => tailor.id === id);
 }
 
 export default async function TailorDetail({ params }) {
-  const tailor = await getTailor(params.id)
+  const tailor = await getTailor(params.id);
 
   if (!tailor) {
-    notFound()
+    notFound();
   }
 
   return (
     <div className="min-h-screen bg-gray-900 text-white">
       <div className="container mx-auto px-4 py-8">
-        <Link href="/tailors" className="text-purple-400 hover:text-purple-300 mb-4 inline-block">
+        <Link
+          href="/tailors"
+          className="text-purple-400 hover:text-purple-300 mb-4 inline-block"
+        >
           &larr; Back to Tailors
         </Link>
-        
+
         <div className="bg-gray-800 rounded-lg p-6 mb-8">
           <div className="flex flex-col md:flex-row">
             <Image
               src={tailor.url}
-              height = "300"
-              width = "300"
+              height="300"
+              width="300"
               alt={tailor.name}
               className="w-full md:w-1/3 h-64 md:h-auto object-cover rounded-lg mb-4 md:mb-0 md:mr-6"
             />
@@ -87,7 +216,9 @@ export default async function TailorDetail({ params }) {
               <h1 className="text-3xl font-bold mb-2">{tailor.name}</h1>
               <div className="flex items-center mb-4">
                 <Star className="text-yellow-400 mr-1" />
-                <span>{tailor.rating} ({tailor.reviews.length} reviews)</span>
+                <span>
+                  {tailor.rating} ({tailor.reviews.length} reviews)
+                </span>
               </div>
               <div className="grid grid-cols-2 gap-4 mb-4">
                 <div className="flex items-center">
@@ -110,7 +241,10 @@ export default async function TailorDetail({ params }) {
               <h2 className="text-xl font-bold mb-2">Specialties</h2>
               <div className="flex flex-wrap gap-2 mb-4">
                 {tailor.specialties.map((specialty, index) => (
-                  <span key={index} className="bg-purple-600 px-3 py-1 rounded-full text-sm">
+                  <span
+                    key={index}
+                    className="bg-purple-600 px-3 py-1 rounded-full text-sm"
+                  >
                     {specialty}
                   </span>
                 ))}
@@ -120,7 +254,7 @@ export default async function TailorDetail({ params }) {
             </div>
           </div>
         </div>
-        
+
         <div className="bg-gray-800 rounded-lg p-6">
           <h2 className="text-2xl font-bold mb-4">Reviews</h2>
           <div className="space-y-4">
@@ -140,14 +274,16 @@ export default async function TailorDetail({ params }) {
         </div>
       </div>
     </div>
-  )
+  );
 }
 
 function BookingForm({ tailorId }) {
   return (
     <form className="space-y-4">
       <div>
-        <label htmlFor="date" className="block mb-2">Select Date</label>
+        <label htmlFor="date" className="block mb-2">
+          Select Date
+        </label>
         <input
           type="date"
           id="date"
@@ -157,7 +293,9 @@ function BookingForm({ tailorId }) {
         />
       </div>
       <div>
-        <label htmlFor="time" className="block mb-2">Select Time</label>
+        <label htmlFor="time" className="block mb-2">
+          Select Time
+        </label>
         <input
           type="time"
           id="time"
@@ -173,5 +311,5 @@ function BookingForm({ tailorId }) {
         Book Appointment
       </button>
     </form>
-  )
+  );
 }

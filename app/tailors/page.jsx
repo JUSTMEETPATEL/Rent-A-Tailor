@@ -30,14 +30,47 @@ const tailors = [
   },
   {
     id: "3",
-    name: "Aryan Singh",
+    name: "Raju Shah",
+    rating: 4.7,
+    reviews: 87,
+    specialization: "Suits",
+    location: "CMBT",
+    gender: "Male",
+    price: 750,
+    url: "/raju.avif",
+  },
+  {
+    id: "4",
+    name: "Aakash Biju",
+    rating: 4.7,
+    reviews: 87,
+    specialization: "Formal Wear",
+    location: "CMBT",
+    gender: "Male",
+    price: 750,
+    url: "/aakash.webp",
+  },
+  {
+    id: "5",
+    name: "Fatima Sheik",
     rating: 4.9,
     reviews: 110,
     specialization: "Alterations",
     location: "Ashok Nagar",
-    gender: "Male",
+    gender: "Female",
     price: 700,
     url: "/male2.jpeg",
+  },
+  {
+    id: "6",
+    name: "Angela Cristopher",
+    rating: 4.9,
+    reviews: 110,
+    specialization: "Formal Wear",
+    location: "Ashok Nagar",
+    gender: "Female",
+    price: 700,
+    url: "/female1.jpeg",
   },
 ];
 
@@ -97,7 +130,7 @@ export default function TailorsPage() {
                     onChange={handleFilterChange}
                     className="w-full"
                   />
-                  <span>{filters.minRating.toFixed(1)} stars</span>
+                  <span>{Number(filters.minRating).toFixed(1)} stars</span>
                 </div>
                 <div>
                   <label htmlFor="gender" className="block mb-2">
