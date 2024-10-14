@@ -10,10 +10,10 @@ export function LandingPage() {
       <nav className="bg-gray-800 p-4">
         <div className="container mx-auto flex justify-between items-center">
           <Link href="/" className="text-2xl font-bold text-purple-400">
-            Rent Me a Tailor
+            Rent Me a Taylor
           </Link>
           <Link href="/tailors" className="text-purple-400 hover:text-purple-300">
-            Browse Tailors
+            Browse Taylor
           </Link>
         </div>
       </nav>
@@ -25,12 +25,12 @@ export function LandingPage() {
             href="/tailors"
             className="bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 px-6 rounded-full inline-flex items-center">
             <Search className="mr-2" />
-            Explore Tailors
+            Explore Taylors
           </Link>
         </section>
 
         <section className="mb-16">
-          <h2 className="text-3xl font-bold mb-8 text-center">Tailor of the Month</h2>
+          <h2 className="text-3xl font-bold mb-8 text-center">Taylor of the Month</h2>
           <div
             className="bg-gray-800 rounded-lg p-6 flex flex-col md:flex-row items-center">
             <Image
@@ -51,13 +51,13 @@ export function LandingPage() {
         </section>
 
         <section>
-          <h2 className="text-3xl font-bold mb-8 text-center">Top Rated Tailors</h2>
+          <h2 className="text-3xl font-bold mb-8 text-center">Top Rated Taylors</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {[1, 2, 3].map((i) => (
               <div key={i} className="bg-gray-800 rounded-lg p-4 flex items-center">
                 <img
                   src={`/placeholder.svg?height=80&width=80&text=Tailor ${i}`}
-                  alt={`Top Tailor ${i}`}
+                  alt={`Top Taylor ${i}`}
                   className="w-20 h-20 rounded-full mr-4" />
                 <div>
                   <h3 className="text-xl font-bold mb-1">Tailor {i}</h3>
