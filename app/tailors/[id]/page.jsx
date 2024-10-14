@@ -1,3 +1,4 @@
+'use client'
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import {
@@ -10,6 +11,7 @@ import {
 } from "lucide-react";
 import Image from "next/image";
 
+// Tailor data
 const tailors = [
   {
     id: "1",
@@ -182,15 +184,28 @@ const tailors = [
 ];
 
 async function getTailor(id) {
-  // In a real app, this would be an API call or database query
   return tailors.find((tailor) => tailor.id === id);
 }
 
-export default async function TailorDetail({ params }) {
-  const tailor = await getTailor(params.id);
+import { useEffect, useState } from "react";
+
+export default function TailorDetail({ params }) {
+  const [tailor, setTailor] = useState(null);
+
+  useEffect(() => {
+    async function fetchTailor() {
+      const tailorData = await getTailor(params.id);
+      if (!tailorData) {
+        notFound();
+      } else {
+        setTailor(tailorData);
+      }
+    }
+    fetchTailor();
+  }, [params.id]);
 
   if (!tailor) {
-    notFound();
+    return <div>Loading...</div>;
   }
 
   return (
@@ -277,36 +292,93 @@ export default async function TailorDetail({ params }) {
   );
 }
 
+
 function BookingForm({ tailorId }) {
+  useEffect(() => {
+    const script = document.createElement("script");
+    script.src = "https://checkout.razorpay.com/v1/checkout.js";
+    script.async = true;
+    document.body.appendChild(script);
+    return () => {
+      document.body.removeChild(script);
+    };
+  }, []);
+
+  const handleBooking = async (event) => {
+    event.preventDefault();
+    const date = event.target.date.value;
+    const time = event.target.time.value;
+
+    try {
+      const response = await fetch("/api/create-order", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ date, time, tailorId }),
+      });
+
+      const data = await response.json();
+
+      if (data.orderID) {
+        const options = {
+          key: process.env.NEXT_PUBLIC_RAZORPAY_ID,
+          amount: 80000,
+          currency: "INR",
+          name: "Tailor Booking",
+          description: "Book an appointment with a tailor",
+          order_id: data.orderID,
+          handler: function (response) {
+            alert("Payment Successful!");
+            console.log(response);
+          },
+          prefill: {
+            name: "John Doe",
+            email: "johndoe@example.com",
+            contact: "9999999999",
+          },
+        };
+
+        const razorpay = new window.Razorpay(options);
+        razorpay.open();
+      } else {
+        alert("Failed to create an order. Please try again.");
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      alert("An error occurred. Please try again.");
+    }
+  };
+
   return (
-    <form className="space-y-4">
-      <div>
-        <label htmlFor="date" className="block mb-2">
-          Select Date
+    <form onSubmit={handleBooking}>
+      <div className="mb-4">
+        <label htmlFor="date" className="block mb-1">
+          Select Date:
         </label>
         <input
           type="date"
           id="date"
           name="date"
-          className="w-full bg-gray-700 p-2 rounded"
           required
+          className="p-2 bg-gray-800 border rounded w-full"
         />
       </div>
-      <div>
-        <label htmlFor="time" className="block mb-2">
-          Select Time
+      <div className="mb-4">
+        <label htmlFor="time" className="block mb-1">
+          Select Time:
         </label>
         <input
           type="time"
           id="time"
           name="time"
-          className="w-full bg-gray-700 p-2 rounded"
           required
+          className="p-2 bg-gray-800 border rounded w-full"
         />
       </div>
       <button
         type="submit"
-        className="bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded w-full"
+        className="bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded"
       >
         Book Appointment
       </button>
