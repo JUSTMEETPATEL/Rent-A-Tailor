@@ -3,6 +3,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { Star, Filter, MapPin, Briefcase } from "lucide-react";
 import Image from "next/image";
+import { Button } from "@/components/ui/button";
 
 const tailors = [
   {
@@ -106,7 +107,12 @@ export default function TailorsPage() {
         <h1 className="text-4xl font-bold mb-8 text-center">
           <a href="/">Browse Taylors</a>
         </h1>
-
+        <header className="flex justify-between items-center mb-8">
+          <h1 className="text-4xl font-bold text-[#9333EA]">About Us</h1>
+          <Button asChild className="bg-[#9333EA] hover:bg-[#A855F7] text-white">
+            <a href="/">Home</a>
+          </Button>
+        </header>
         <div className="flex flex-col md:flex-row gap-8">
           <div className="w-full md:w-1/4">
             <div className="bg-gray-800 p-4 rounded-lg">
