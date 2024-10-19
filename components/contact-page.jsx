@@ -44,14 +44,24 @@ export function ContactPage() {
   return (
     <div className="min-h-screen bg-[#1F2937] py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-3xl mx-auto">
+        <header className="flex justify-between items-center mb-8">
+          <h1 className="text-4xl font-bold text-[#9333EA]">About Us</h1>
+          <Button
+            asChild
+            className="bg-[#9333EA] hover:bg-[#A855F7] text-white"
+          >
+            <a href="/">Home</a>
+          </Button>
+        </header>
+
         <Card className="bg-[#374151] shadow-lg border border-[#4B5563]">
           <CardHeader className="text-center">
             <CardTitle className="text-3xl font-bold text-[#9333EA]">
               Get in Touch
             </CardTitle>
             <CardDescription className="text-[#A855F7]">
-              We&apos;d love to hear from you! Fill out the form below to send us a
-              message.
+              We&apos;d love to hear from you! Fill out the form below to send
+              us a message.
             </CardDescription>
           </CardHeader>
           <CardContent>
