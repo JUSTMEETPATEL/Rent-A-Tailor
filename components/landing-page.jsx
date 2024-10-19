@@ -79,22 +79,38 @@ export function LandingPage() {
             Top Rated Taylors
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {[1, 2, 3].map((i) => (
+            {[
+              {
+                id:1,
+                name: "Aakash Biju",
+                img: "/aakash.webp",
+              },
+              {
+                id:2,
+                name: "Raju Shah",
+                img: "/raju.avif",
+              },
+              {
+                id:3,
+                name: "Riya Sinha",
+                img: "/female1.jpeg",
+              }
+            ].map((i) => (
               <div
                 key={i}
                 className="bg-gray-800 rounded-lg p-4 flex items-center"
               >
                 <img
-                  src={`/placeholder.svg?height=80&width=80&text=Tailor ${i}`}
-                  alt={`Top Taylor ${i}`}
+                  src={`${i.img}?height=80&width=80&text=Tailor ${i.name}`}
+                  alt={`Top Taylor ${i.name}`}
                   className="w-20 h-20 rounded-full mr-4"
                 />
                 <div>
-                  <h3 className="text-xl font-bold mb-1">Tailor {i}</h3>
+                  <h3 className="text-xl font-bold mb-1">{i.name}</h3>
                   <div className="flex items-center">
                     <Star className="text-yellow-400 mr-1" />
                     <span>
-                      4.{9 - i} ({100 - i * 10} reviews)
+                      4.{9 - i.id} ({100 - i.id * 10} reviews)
                     </span>
                   </div>
                 </div>
